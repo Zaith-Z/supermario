@@ -1,18 +1,12 @@
-FROM tomcat:9
+FROM nginx:1.27-alpine
 
-MAINTAINER github.com/PengBAI
+LABEL maintainer="github.com/Zaith-Z"
 
-RUN rm -rf /usr/local/tomcat/webapps/ROOT/*
+RUN rm -rf /usr/share/nginx/html/* \
+    && chown -R nginx:nginx /usr/share/nginx/html /var/cache/nginx /var/run
 
-ADD webapp/ /usr/local/tomcat/webapps/ROOT/
+COPY webapp/ /usr/share/nginx/html/
 
-## Create non-root user 
-RUN useradd -ms /bin/bash mario \
-    && usermod -aG mario mario \
-    && chown -R mario:mario /usr/local/tomcat
+EXPOSE 80
 
-EXPOSE 8080
-CMD ["catalina.sh", "run"]
-
-USER mario
-
+USER nginx
