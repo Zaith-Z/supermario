@@ -4,9 +4,7 @@ LABEL maintainer="github.com/Zaith-Z"
 
 COPY webapp/ /usr/share/nginx/html/
 
-COPY entrypoint.sh /entrypoint.sh
-
-RUN chmod +x /entrypoint.sh
+COPY --chmod=755 entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
 
