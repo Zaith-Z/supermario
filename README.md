@@ -5,7 +5,7 @@ Infinite Mario in HTML5 JavaScript - using Canvas and Audio elements
 
 Run with mapping container's 8080 port, and use your navigator http://localhost:8080:
 ```
-docker run -d -p 8080:80 pengbai/docker-supermario
+docker run -d -p 8080:80 zaith/supermario
 ```
 
 ## Updates
